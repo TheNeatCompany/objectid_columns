@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   ar_version = ar_version.strip if ar_version
 
   version_spec = case ar_version
-  when nil then [ ">= 3.0", "<= 4.99.99" ]
+  when nil then ">= 5.0"
   when 'master' then nil
   else [ "=#{ar_version}" ]
   end
