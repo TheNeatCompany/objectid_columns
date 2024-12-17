@@ -17,26 +17,29 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.required_ruby_version     = '~> 3.3.2'
+  spec.required_rubygems_version = '~> 3.5.9'
 
   ar_version = ENV['OBJECTID_COLUMNS_AR_TEST_VERSION']
   ar_version = ar_version.strip if ar_version
 
   version_spec = case ar_version
-  when nil then "~> 5.0"
+  when nil then '~> 7.1'
   when 'master' then nil
-  else [ "=#{ar_version}" ]
+  else [ '=#{ar_version}' ]
   end
 
   if version_spec
-    spec.add_dependency("activerecord", *version_spec)
-    spec.add_dependency("activesupport", *version_spec)
+    spec.add_dependency('activerecord', *version_spec)
+    spec.add_dependency('activesupport', *version_spec)
   end
 
-  spec.add_development_dependency "bundler", "~> 1.5"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec", "~> 2.14"
-  spec.add_development_dependency "moped", "~> 1.5" unless RUBY_VERSION =~ /^1\.8\./
-  spec.add_development_dependency "bson", "~> 1.9"
+  spec.add_development_dependency 'bundler', '~> 2.5.15'
+  spec.add_development_dependency 'rake', '~> 13.2.1'
+  spec.add_development_dependency 'rspec', '~> 3.13'
+  spec.add_development_dependency 'moped', '~> 2.0.7'
+  spec.add_development_dependency 'bson', '~> 5.0.2'
+  spec.add_development_dependency 'composite_primary_keys', '~> 14.0.9'
 
   require File.expand_path(File.join(File.dirname(__FILE__), 'spec', 'objectid_columns', 'helpers', 'database_helper'))
   database_gem_name = ObjectidColumns::Helpers::DatabaseHelper.maybe_database_gem_name
