@@ -6,11 +6,11 @@ module ObjectidColumns
   module Helpers
     module SystemHelpers
       def migrate(&block)
-        migration_class = Class.new(::ActiveRecord::Migration)
+        migration_class = Class.new(::ActiveRecord::Migration[7.2])
         metaclass = migration_class.class_eval { class << self; self; end }
         metaclass.instance_eval { define_method(:up, &block) }
 
-        ::ActiveRecord::Migration.suppress_messages do
+        ::ActiveRecord::Migration[7.2].suppress_messages do
           migration_class.migrate(:up)
         end
       end

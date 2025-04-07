@@ -34,12 +34,11 @@ Gem::Specification.new do |spec|
     spec.add_dependency('activesupport', *version_spec)
   end
 
-  spec.add_development_dependency 'bundler', '~> 2.5.15'
+  spec.add_development_dependency 'bundler', '~> 2.6.6'
   spec.add_development_dependency 'rake', '~> 13.2.1'
   spec.add_development_dependency 'rspec', '~> 3.13'
   spec.add_development_dependency 'moped', '~> 2.0.7'
-  spec.add_development_dependency 'bson', '~> 5.0.2'
-  spec.add_development_dependency 'composite_primary_keys', '~> 14.0.9'
+  spec.add_development_dependency 'bson', '~> 3.0'
 
   require File.expand_path(File.join(File.dirname(__FILE__), 'spec', 'objectid_columns', 'helpers', 'database_helper'))
   database_gem_name = ObjectidColumns::Helpers::DatabaseHelper.maybe_database_gem_name
@@ -71,6 +70,6 @@ Gem::Specification.new do |spec|
   cpk_allowed = false if defined?(RUBY_ENGINE) && (RUBY_ENGINE == 'jruby') && ar_version && ar_version =~ /^4\.1\./ && database_gem_name =~ /(sqlite)/
 
   if cpk_allowed
-    spec.add_development_dependency "composite_primary_keys"
+    spec.add_development_dependency 'composite_primary_keys'
   end
 end
