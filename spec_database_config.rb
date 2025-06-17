@@ -3,6 +3,6 @@ OBJECTID_COLUMNS_SPEC_DATABASE_CONFIG = {
   :require => 'pg',
   :config => {
     :adapter => 'postgresql',
+    :username => 'postgres'
   }
 }
-
